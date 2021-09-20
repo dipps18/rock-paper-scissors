@@ -1,0 +1,1 @@
+This is a simple rock paper scissor console game using javascript
