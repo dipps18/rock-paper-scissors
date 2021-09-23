@@ -81,6 +81,12 @@ h2{
 .winner{
     font-size: 20px;
 }
+.your-selection,
+.comp-selection{
+    width:50px;
+}
+
+
 
 
 
