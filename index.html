@@ -3,8 +3,59 @@
     <head>
         <title>Rock Paper Scissors</title>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="styles.css">
     </head>
-    <body>
-        <script src="external.js"></script>
+    <body>  
+        <div class="header">
+            <h1>Rock Paper Scissors</h1>
+        </div>
+
+        <div class="first">
+            <h2> Round: </h2>
+            <h3 class="round"></h3>
+        </div>
+
+        <div class="second">
+            <div class="score">
+                <h3>Your Score</h3>
+                <h3>Computer Score</h3>
+            </div>
+            <div class="points">
+                <p class="your-points"></p>
+                <p class="comp-points"></p>
+
+            </div>
+            <div class="round-winner">
+                <h2> Round Winner:</h2>
+                <h2 class="winner"></h2>
+            </div>
+
+        </div>
+
+        <div class="third">
+            <div class="third-header">
+                <h3>Your Selection</h3>
+                <h3>Computer Selection</h3>   
+            </div>
+            <div class="selection">
+                <h3 class="your-selection"></h3>
+                <h3 class="comp-selection"></h3>
+            </div>
+           <div class="buttons">
+                <div class="rock">
+                    <img src="images/rock.jpeg" alt="Image showing a fist as a representation for rock">
+                    <button class="rock-btn"> ROCK </button>
+                </div>
+                <div class="paper">
+                    <img src="images/paper.png"  alt="Image showing a palm as a representation for paper">
+                    <button class="paper-btn"> PAPER </button>
+                </div>
+                <div class="scissor">
+                    <img src="images/scissor.png"  alt="Image showing 2 fingers as a representation for scissors">
+                    <button class="scissor-btn"> SCISSORS </button>
+                </div>
+            </div> 
+        </div>
+            <script src="external.js"></script>    
     </body>
 </html>

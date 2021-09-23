@@ -15,7 +15,7 @@
         if(playerSelection.toLowerCase()=="rock" && computerSelection=="paper"){
             return("Computer Wins!");
         }
-        else if(playerSelection.toLowerCase()=="rock" && computerSelection=="Scissor"){
+        else if(playerSelection.toLowerCase()=="rock" && computerSelection=="scissor"){
             return("You Win!");
         }
         else if(playerSelection.toLowerCase()=="rock" && computerSelection=="rock"){
@@ -37,36 +37,73 @@
             return("Computer Wins!");
         }
         else if(playerSelection.toLowerCase()=="scissor" && computerSelection=="scissor"){
-            return("Draw!");
+            return("Draw");
         }
-
     }
 
-    function game(){
-        console.log("Welcome to rock paper scissors");
-        let gameover=0;
-        let round=1;
-        let playerSelection,computerSelection;
-        let yourScore=0,compScore=0;
-        while(!gameover){
-            console.log(`Round ${round}:`);
-            playerSelection = prompt("Enter you selection");
-            computerSelection = computerPlay();
-            console.log(`Your choice: ${playerSelection}\nComputer choice: ${computerSelection}`);
-            console.log(playRound(playerSelection, computerSelection));
-            if(playRound(playerSelection,computerSelection)=="Computer Wins!")
-                compScore++;
-            else if(playRound(playerSelection,computerSelection)=="You Win!")
-                yourScore++;
-            if((compScore!=yourScore) && round==5)
-                gameover=1;
+    let gameover=0;
+    let round=0;
+    let playerSelection,computerSelection;
+    let yourScore=0,compScore=0;
+    let winner;
+
+    const buttons=document.querySelectorAll('button'); //buttons constant with elements rock, paper and scissors
+    const yourSelection=document.querySelector('.your-selection');
+    const compSelection=document.querySelector('.comp-selection');
+    const roundWinner=document.querySelector('.winner');
+    const playerScore=document.querySelector('.your-points');
+    const computerScore=document.querySelector('.comp-points');
+    const curRound=document.querySelector('.round');
+
+    playerScore.appendChild(document.createTextNode("0"));
+    computerScore.appendChild(document.createTextNode("0"));
+    curRound.appendChild(document.createTextNode("0"));
+
+
+    buttons.forEach((button)=>{
+        button.addEventListener('click',()=>{
             round++;
-        }
-        console.log(`Your Score: ${yourScore}\nComputer Score: ${compScore}`);
-        if(yourScore>compScore)
-            console.log("You win the game!");
-        else
-            console.log("Computer wins the game");
-    }
+            curRound.textContent=round;
+            computerSelection=computerPlay();
+            console.log(button.classList);
 
-    game();
+            if(button.classList=="rock-btn")
+                playerSelection="rock";
+            else if(button.classList=="paper-btn")
+                playerSelection="paper";
+            else
+                playerSelection="scissor";
+
+            if(yourSelection==null){
+                yourSelection.appendChild(document.createTextNode(playerSelection));
+                compSelection.appendChild(document.createTextNode(computerSelection));
+            }
+            else{
+                yourSelection.textContent=playerSelection;
+                compSelection.textContent=computerSelection;
+            }
+            console.log(yourSelection.textContent);
+            console.log(compSelection.textContent);
+            console.log(winner=playRound(playerSelection,computerSelection));
+
+            if(roundWinner==null)
+                roundWinner.appendChild(document.createTextNode(winner));
+            else
+                roundWinner.textContent=winner;
+
+            if(winner=="Computer Wins!"){
+                compScore++;
+            }
+            
+            else if(winner=="You Win!"){
+                yourScore++;
+            }       
+            playerScore.textContent=yourScore;
+            computerScore.textContent=compScore;
+            console.log(yourScore);
+            console.log(compScore);
+
+        });
+    })
+
+    

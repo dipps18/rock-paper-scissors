@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200&display=swap');
+
+
+html{
+    background-color: #192d57;
+}
+
+.header {
+    font-family: 'Stick No Bills', sans-serif;
+    text-align: center;
+    font-size:30px;
+}
+body{
+    color:white
+}
+body,
+.second,
+.third,
+.round-winner,
+.first{
+    display: flex;
+    flex-direction: column;
+}
+.first h3{
+    text-align: center;
+    font-size: 35px;
+}
+
+h3,h2{
+    font-family: 'Gemunu Libre', sans-serif;
+}
+
+h2{
+    text-align:center;
+    font-size:40px;
+}
+
+.score,
+.selection,
+.points,
+.third-header{
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons{
+    display:flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    gap:20px
+}
+
+.scissor,
+.paper,
+.rock{
+    display: flex;
+    flex-direction:column;
+    gap:10px;
+}
+.selection{
+    height:57px;
+}
+
+.points{
+    height:53px;
+}
+.second{
+    height:331px;
+}
+
+.scissor img,
+.paper img,
+.rock img{
+    height: 100px;
+    width:100px;
+}
+
+.winner{
+    font-size: 30px;
+}
+
+
+
+
