@@ -9,7 +9,7 @@ html{
 .header {
     font-family: 'Stick No Bills', sans-serif;
     text-align: center;
-    font-size:30px;
+    font-size:20px;
 }
 body{
     color:white
@@ -21,10 +21,11 @@ body,
 .first{
     display: flex;
     flex-direction: column;
+    margin:0px;
 }
 .first h3{
     text-align: center;
-    font-size: 35px;
+    font-size: 25px;
 }
 
 h3,h2{
@@ -33,7 +34,7 @@ h3,h2{
 
 h2{
     text-align:center;
-    font-size:40px;
+    font-size:30px;
 }
 
 .score,
@@ -60,25 +61,25 @@ h2{
     gap:10px;
 }
 .selection{
-    height:57px;
+    height:50px;
 }
 
 .points{
-    height:53px;
+    height:45px;
 }
 .second{
-    height:331px;
+    height:150px;
 }
 
 .scissor img,
 .paper img,
 .rock img{
-    height: 100px;
-    width:100px;
+    height: 80px;
+    width:80px;
 }
 
 .winner{
-    font-size: 30px;
+    font-size: 20px;
 }
 
 

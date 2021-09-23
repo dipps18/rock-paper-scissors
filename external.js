@@ -12,6 +12,7 @@
     }
 
     function playRound(playerSelection, computerSelection){
+
         if(playerSelection.toLowerCase()=="rock" && computerSelection=="paper"){
             return("Computer Wins!");
         }
@@ -54,6 +55,9 @@
     const playerScore=document.querySelector('.your-points');
     const computerScore=document.querySelector('.comp-points');
     const curRound=document.querySelector('.round');
+    const playerImg=document.createElement("img");
+    const compImg=document.createElement("img");
+
 
     playerScore.appendChild(document.createTextNode("0"));
     computerScore.appendChild(document.createTextNode("0"));
@@ -65,25 +69,35 @@
             round++;
             curRound.textContent=round;
             computerSelection=computerPlay();
-            console.log(button.classList);
-
-            if(button.classList=="rock-btn")
+            if(button.classList=="rock-btn"){
                 playerSelection="rock";
-            else if(button.classList=="paper-btn")
+                playerImg.src="images/rock.jpeg";
+            }
+            else if(button.classList=="paper-btn"){
                 playerSelection="paper";
-            else
-                playerSelection="scissor";
-
-            if(yourSelection==null){
-                yourSelection.appendChild(document.createTextNode(playerSelection));
-                compSelection.appendChild(document.createTextNode(computerSelection));
+                playerImg.src="images/paper.png";
             }
             else{
-                yourSelection.textContent=playerSelection;
-                compSelection.textContent=computerSelection;
+                playerSelection="scissor";
+                playerImg.src="images/scissor.png";
             }
-            console.log(yourSelection.textContent);
-            console.log(compSelection.textContent);
+
+            if(computerSelection=="rock")
+                compImg.src="images/rock.jpeg";
+            else if(computerSelection=="paper")
+                compImg.src="images/paper.png";
+            else
+                compImg.src="images/scissor.png";
+
+            if(yourSelection==null){
+                yourSelection.appendChild(playerImg.src);
+                compSelection.appendChild(compImg.src);
+            }
+            else{
+                yourSelection.src=playerImg.src;
+                compSelection.src=compImg.src;
+            }
+
             console.log(winner=playRound(playerSelection,computerSelection));
 
             if(roundWinner==null)
