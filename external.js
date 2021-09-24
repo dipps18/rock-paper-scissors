@@ -13,35 +13,89 @@
 
     function playRound(playerSelection, computerSelection){
 
-        if(playerSelection.toLowerCase()=="rock" && computerSelection=="paper"){
-            return("Computer Wins!");
+        if(playerSelection.toLowerCase()=="rock"){
+            if(computerSelection=="paper"){
+                return "Computer Wins!";
+            }
+            else if(computerSelection=="scissor"){
+                return "You Win!";
+            }
+            else{
+                return "Draw";
+            }
         }
-        else if(playerSelection.toLowerCase()=="rock" && computerSelection=="scissor"){
-            return("You Win!");
-        }
-        else if(playerSelection.toLowerCase()=="rock" && computerSelection=="rock"){
-            return("Draw");
-        }
-        else if(playerSelection.toLowerCase()=="paper" && computerSelection=="paper"){
-            return("Draw");
-        }
-        else if(playerSelection.toLowerCase()=="paper" && computerSelection=="scissor"){
-            return("Computer Wins!");
-        }
-        else if(playerSelection.toLowerCase()=="paper" && computerSelection=="rock"){
-            return("You Win!");
-        }
-        else if(playerSelection.toLowerCase()=="scissor" && computerSelection=="paper"){
-            return("You Win!");
-        }
-        else if(playerSelection.toLowerCase()=="scissor" && computerSelection=="rock"){
-            return("Computer Wins!");
-        }
-        else if(playerSelection.toLowerCase()=="scissor" && computerSelection=="scissor"){
-            return("Draw");
+        else if(playerSelection.toLowerCase()=="paper"){
+            if(computerSelection=="scissor"){
+                return "Computer Wins!";
+            }
+            else if(computerSelection=="rock"){
+                return "You Win!";
+            }
+            else{
+                return "Draw";
+            }
+        } 
+        else{
+            if(computerSelection=="rock")
+                return "Computer Wins!";
+            else if(computerSelection=="paper")
+                return "You Win!";
+            else return "Draw";
         }
     }
 
+    function initPlayer(button){
+        if(button.classList=="rock-btn"){
+            playerSelection="rock";
+            playerImg.src="images/rock.jpeg";
+            playerImg.alt="Image showing a fist as a representation for rock";
+        }
+        else if(button.classList=="paper-btn"){
+            playerSelection="paper";
+            playerImg.src="images/paper.png";
+            playerImg.alt="Image showing a palm as a representation for paper";
+
+        }
+        else{
+            playerSelection="scissor";
+            playerImg.src="images/scissor.png";
+            playerImg.alt="Image showing 2 fingers as a representation for scissors";
+
+        }
+        selection.appendChild(playerImg);
+
+    }
+
+    function initComp(button){
+        if(computerSelection=="rock"){
+            compImg.src="images/rock.jpeg";
+            compImg.alt="Image showing fist as a representation for rock";
+
+        }
+        else if(computerSelection=="paper"){
+            compImg.src="images/paper.png";
+            compImg.alt="Image showing palm as a representation for paper";
+        }
+        else{
+            compImg.src="images/scissor.png";
+            compImg.alt="Image showing 2 fingers as a representation for scissors";
+
+        }
+        selection.appendChild(compImg);
+    }
+
+    function updateScore(){
+
+        if(winner=="Computer Wins!"){
+            compScore++;
+        }
+        
+        else if(winner=="You Win!"){
+            yourScore++;
+        }       
+        playerScore.textContent=yourScore;
+        computerScore.textContent=compScore;
+    }
     let round=0;
     let playerSelection,computerSelection;
     let yourScore=0,compScore=0;
@@ -60,6 +114,7 @@
 
     playerImg.classList.add("yourChoice");
     compImg.classList.add("compChoice");
+    
     playerScore.appendChild(document.createTextNode("0"));
     computerScore.appendChild(document.createTextNode("0"));
     curRound.appendChild(document.createTextNode("0"));
@@ -67,65 +122,15 @@
 
     buttons.forEach((button)=>{
         button.addEventListener('click',()=>{
-            round++;
-            curRound.textContent=round;
+            curRound.textContent=++round;
             computerSelection=computerPlay();
-            if(button.classList=="rock-btn"){
-                playerSelection="rock";
-                playerImg.src="images/rock.jpeg";
-                playerImg.alt="Image showing a fist as a representation for rock";
-            }
-            else if(button.classList=="paper-btn"){
-                playerSelection="paper";
-                playerImg.src="images/paper.png";
-                playerImg.alt="Image showing a palm as a representation for paper";
 
-            }
-            else{
-                playerSelection="scissor";
-                playerImg.src="images/scissor.png";
-                playerImg.alt="Image showing 2 fingers as a representation for scissors";
-
-            }
-
-            if(computerSelection=="rock"){
-                compImg.src="images/rock.jpeg";
-                compImg.alt="Image showing fist as a representation for rock";
-
-            }
-            else if(computerSelection=="paper"){
-                compImg.src="images/paper.png";
-                compImg.alt="Image showing palm as a representation for paper";
-
-
-            }
-            else{
-                compImg.src="images/scissor.png";
-                compImg.alt="Image showing 2 fingers as a representation for scissors";
-
-            }
-            console.log(yourSelection);
-            console.log(compSelection);
-            selection.appendChild(playerImg);
-            selection.appendChild(compImg);
-            console.log(selection)
-        
+            initPlayer(button);
+            initComp(button);        
 
             console.log(winner=playRound(playerSelection,computerSelection));
+            updateScore();
 
-            if(winner=="Computer Wins!"){
-                compScore++;
-            }
-            
-            else if(winner=="You Win!"){
-                yourScore++;
-            }       
-
-            playerScore.textContent=yourScore;
-            computerScore.textContent=compScore;
-
-            console.log(yourScore);
-            console.log(compScore);
 
             if(yourScore>=5||compScore>=5){
                 if(compScore>yourScore){
