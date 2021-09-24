@@ -42,7 +42,6 @@
         }
     }
 
-    let gameover=0;
     let round=0;
     let playerSelection,computerSelection;
     let yourScore=0,compScore=0;
@@ -57,8 +56,10 @@
     const curRound=document.querySelector('.round');
     const playerImg=document.createElement("img");
     const compImg=document.createElement("img");
+    const selection=document.querySelector(".selection");
 
-
+    playerImg.classList.add("yourChoice");
+    compImg.classList.add("compChoice");
     playerScore.appendChild(document.createTextNode("0"));
     computerScore.appendChild(document.createTextNode("0"));
     curRound.appendChild(document.createTextNode("0"));
@@ -72,37 +73,46 @@
             if(button.classList=="rock-btn"){
                 playerSelection="rock";
                 playerImg.src="images/rock.jpeg";
+                playerImg.alt="Image showing a fist as a representation for rock";
             }
             else if(button.classList=="paper-btn"){
                 playerSelection="paper";
                 playerImg.src="images/paper.png";
+                playerImg.alt="Image showing a palm as a representation for paper";
+
             }
             else{
                 playerSelection="scissor";
                 playerImg.src="images/scissor.png";
+                playerImg.alt="Image showing 2 fingers as a representation for scissors";
+
             }
 
-            if(computerSelection=="rock")
+            if(computerSelection=="rock"){
                 compImg.src="images/rock.jpeg";
-            else if(computerSelection=="paper")
-                compImg.src="images/paper.png";
-            else
-                compImg.src="images/scissor.png";
+                compImg.alt="Image showing fist as a representation for rock";
 
-            if(yourSelection==null){
-                yourSelection.appendChild(playerImg.src);
-                compSelection.appendChild(compImg.src);
+            }
+            else if(computerSelection=="paper"){
+                compImg.src="images/paper.png";
+                compImg.alt="Image showing palm as a representation for paper";
+
+
             }
             else{
-                yourSelection.src=playerImg.src;
-                compSelection.src=compImg.src;
+                compImg.src="images/scissor.png";
+                compImg.alt="Image showing 2 fingers as a representation for scissors";
+
             }
+            console.log(yourSelection);
+            console.log(compSelection);
+            selection.appendChild(playerImg);
+            selection.appendChild(compImg);
+            console.log(selection)
+        
 
             console.log(winner=playRound(playerSelection,computerSelection));
 
-
-
-           
             if(winner=="Computer Wins!"){
                 compScore++;
             }
@@ -123,14 +133,12 @@
                     yourScore=0;
                     compScore=0;
                     round=0;
-                    gameover=1;
                 }
                 else if(yourScore>compScore){
                     winner="You Win the game!";
                     yourScore=0;
                     compScore=0;
                     round=0;
-                    gameover=1;
                 }
             } 
 

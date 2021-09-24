@@ -81,10 +81,13 @@ h2{
 .winner{
     font-size: 20px;
 }
-.your-selection,
-.comp-selection{
+
+.compChoice,
+.yourChoice{
+    height: 50px;
     width:50px;
 }
+
 
 
 
