@@ -100,11 +100,9 @@
 
             console.log(winner=playRound(playerSelection,computerSelection));
 
-            if(roundWinner==null)
-                roundWinner.appendChild(document.createTextNode(winner));
-            else
-                roundWinner.textContent=winner;
 
+
+           
             if(winner=="Computer Wins!"){
                 compScore++;
             }
@@ -112,12 +110,37 @@
             else if(winner=="You Win!"){
                 yourScore++;
             }       
+
             playerScore.textContent=yourScore;
             computerScore.textContent=compScore;
+
             console.log(yourScore);
             console.log(compScore);
 
-        });
-    })
+            if(yourScore>=5||compScore>=5){
+                if(compScore>yourScore){
+                    winner="Computer Wins the game";
+                    yourScore=0;
+                    compScore=0;
+                    round=0;
+                    gameover=1;
+                }
+                else if(yourScore>compScore){
+                    winner="You Win the game!";
+                    yourScore=0;
+                    compScore=0;
+                    round=0;
+                    gameover=1;
+                }
+            } 
 
+            if(roundWinner==null)
+                roundWinner.appendChild(document.createTextNode(winner));
+            else
+                roundWinner.textContent=winner; 
+
+        });
+  
+    })
+ 
     
