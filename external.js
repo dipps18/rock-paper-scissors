@@ -98,8 +98,9 @@
         computerScore.textContent=compScore;
     }
 
-
     function setWinner(){
+        winner=playRound(playerSelection,computerSelection);
+        updateScore();
         if(yourScore>=5||compScore>=5){
             if(compScore>yourScore){
                 winner="Computer Wins the game";
@@ -107,23 +108,23 @@
             }
             else if(yourScore>compScore){
                 winner="You Win the game!";
-            }
+            } 
             yourScore=0;
             compScore=0;
             round=0;        
         } 
+
         if(roundWinner==null)
             roundWinner.appendChild(document.createTextNode(winner));
         else
             roundWinner.textContent=winner; 
     }
-
     let round=0;
     let playerSelection,computerSelection;
     let yourScore=0,compScore=0;
     let winner;
 
-    const buttons=document.querySelectorAll('button'); 
+    const buttons=document.querySelectorAll('button'); //buttons constant with elements rock, paper and scissors
     const yourSelection=document.querySelector('.your-selection');
     const compSelection=document.querySelector('.comp-selection');
     const roundWinner=document.querySelector('.winner');
@@ -146,10 +147,13 @@
         button.addEventListener('click',()=>{
             curRound.textContent=++round;
             computerSelection=computerPlay();
+
             initPlayer(button);
-            initComp(button);        
-            updateScore();
-            setWinner();
+            initComp(button);  
+            setWinner();      
+          
+
+
         });
   
     })
