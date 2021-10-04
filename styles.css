@@ -9,10 +9,10 @@ html{
 .header {
     font-family: 'Stick No Bills', sans-serif;
     text-align: center;
-    font-size:20px;
+    font-size:25px;
 }
 body{
-    color:white
+    color:rgb(255, 255, 255)
 }
 body,
 .second,
@@ -71,12 +71,16 @@ h2{
     height:150px;
 }
 
-.scissor img,
-.paper img,
-.rock img{
-    height: 80px;
-    width:80px;
+.buttons img{
+    height:120px;
+    width: 120px;
 }
+
+.buttons img:hover{
+    transform: scale(1.1);
+    box-shadow:0 0 5px rgb(106, 223, 106);
+}
+
 
 .winner{
     font-size: 20px;
@@ -88,6 +92,9 @@ h2{
     width:50px;
 }
 
+.points{
+    font-size: 18px;
+}
 
 
 
